@@ -10,6 +10,7 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { Button, Tip } from '@wordpress/components';
 import { Icon, check } from '@wordpress/icons';
 import { useSite, useDomainSuggestion, useDomainSearch, useTitle } from '@automattic/launch';
+import { useLocalizeUrl } from '@automattic/i18n-utils';
 import { Title, SubTitle, ActionButtons, BackButton } from '@automattic/onboarding';
 import {
 	CheckoutStepBody,
@@ -48,6 +49,8 @@ const FinalStep: React.FunctionComponent< LaunchStepProps > = ( { onNextStep, on
 	const { domainSearch } = useDomainSearch();
 
 	const { setStep } = useDispatch( LAUNCH_STORE );
+
+	const localizeUrl = useLocalizeUrl();
 
 	const nameSummary = (
 		<div className="nux-launch__summary-item">
@@ -163,7 +166,11 @@ const FinalStep: React.FunctionComponent< LaunchStepProps > = ( { onNextStep, on
 									</ul>
 									<p>
 										{ __( 'Questions?', 'full-site-editing' ) }{ ' ' }
-										<Button isLink href="https://wordpress.com/help/contact" target="_blank">
+										<Button
+											isLink
+											href={ localizeUrl( 'https://wordpress.com/help/contact' ) }
+											target="_blank"
+										>
 											{ __( 'Ask a Happiness Engineer', 'full-site-editing' ) }
 										</Button>
 									</p>

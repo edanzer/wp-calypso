@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+@import '~@automattic/calypso-color-schemes/src/calypso-color-schemes';
+@import 'assets/stylesheets/gutenberg-base-styles';
+@import '../../mixins';
+
+// Overly specific selector required to override the
+// default <Notice> styles
+.components-notice.is-error.onboarding-error-notice {
+	@include onboarding-medium-text;
+	margin: 0;
+	border: none;
+	background: none;
+	color: var( --studio-red-60 );
+
+	@include break-mobile {
+		margin: 0 16px;
+	}
+
+	.components-notice__content {
+		margin: 0;
+	}
+}
